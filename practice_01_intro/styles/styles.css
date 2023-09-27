@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    padding: 20px;
+}
+
+.mainHeader {
+    color: #0096CD;
+}
+
+/*
+ - определить класс button
+ - цвет текста - белый
+ - цвет фона - #0096CD
+ - внутренний отступ - 8 пикселей
+ - закругленные рамки
+*/
+
+.button {
+    color: #fff;
+    background-color: #0096CD;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+/**
+ - при наведении на кнопку делаем цвет фона aliceblue
+ - курсор на кнопке должен быть "указатель"
+*/
+
+.button:hover {
+    background-color: aquamarine;
+}
+
+.mainContainer section p {
+    font-size: 20px;
+}
+
+.mainContainer, .container {
+
+}
+
+.mainContainer.container {
+    background-color: red;
+}
