@@ -5,15 +5,14 @@
 }
 
 .flexContainer {
+    min-height: 400px;
     border: 1px solid blue;
-    display: flex;
 }
 
 .box {
+    width: 300px;
     height: 300px;
     border: 1px solid black;
-    flex-basis: 100px;
-    flex-grow: 1;
 }
 
 .box1 {
