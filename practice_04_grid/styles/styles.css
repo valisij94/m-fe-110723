@@ -6,11 +6,17 @@
 
 .gridContainer {
     border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 300px);
+
+    justify-items: center;
+    align-items: center;
 }
 
 .box {
-    min-width: 200px;
-    min-height: 200px;
+    width: 200px;
+    height: 200px;
     border: 1px solid black;
 }
 
