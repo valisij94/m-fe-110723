@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.input {
+  border-radius: 10px;
+  border: 1px solid #A1A1A1;
+  padding: 14px;
+  line-height: normal;
+  background-color: rgba(255,255,255, 0.8);
+  font-weight: 500;
+}
+
+.productImage {
+  min-width: 262px;
+  height: 262px;
+  border: 2px dashed #000;
+  border-radius: 10px;
+  grid-row: 1 / 4;
+}
+
+.productName {
+  grid-column: 2 / 4;
+}
+
+.addProductFormContainer {
+  gap: 20px;
+  display: grid;
+  grid-template-columns: minmax(262px, 1fr) 1fr 1fr;
+}
+
+.productDescription {
+  grid-column: 2 / 4;
+  grid-row: 3 / 6;
+}
+
+/* Buttons */
+.button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 45px;
+  width: 262px;
+}
+
+.button.filled {
+  background-color: #FF9C00;
+  color: white;
+  font-weight: 700;
+}
+
+.button.outlined {
+  background-color: #FFF;
+  border: 1px solid #FF9C00;
+  color: #040404;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  grid-column: 2 / 4;
+}
+
+.checkboxesContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+#draftCheckbox {
+  margin-left: 44px;
+}
+
+@media screen and (max-width: 700px) {
+  .addProductFormContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .buttonsContainer {
+    flex-direction: column;
+  }
+}
