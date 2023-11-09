@@ -8,7 +8,14 @@
 </head>
 <body>
   <main class="mainContainer">
-    <div class="productsContainer"
+    <div class="productsContainer"></div>
+    <form id="newProductForm">
+      <input name="productName" id="productName" required placeholder="Product name"/>
+      <input name="productPrice" id="productPrice" required placeholder="Product price"/>
+      <input name="productCategory" id="productCategory" required placeholder="Product category"/>
+      <input name="productDescription" id="productDescription" required placeholder="Product description"/>
+      <button id="addNewProduct">Add Product</button>
+    </form>
   </main>
   <script src="./scripts/main.js"></script>
 </body>

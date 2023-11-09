@@ -52,3 +52,47 @@ const products = [
         description: 'Truck. Nothing more.'
     }
 ];
+
+
+/*2. Пишем в JS функцию `fillProfuctForm` - она примет объект с данными товара, и должна заполнить данные формы.*/
+const nameInput = document.querySelector('#productName');
+const priceInput = document.querySelector('#productPrice');
+const categoryInput = document.querySelector('#productCategory');
+const descriptionInput = document.querySelector('#productDescription');
+
+function fillProductForm(product) {
+    nameInput.value = product.name;
+    priceInput.value = product.price;
+    categoryInput.value = product.category;
+    descriptionInput.value = product.description;
+}
+
+fillProductForm(products[0]);
+
+/*
+3. Пристрелочная задача на добавление DOM-элементов средствами JS. Добавить в форму кнопку "Отмена". */
+const newProductForm = document.querySelector('#newProductForm');
+const cancelBtn = document.createElement('button');
+cancelBtn.textContent = "Cancel";
+newProductForm.append(cancelBtn);
+
+/* На кнопку Cancel добавить обработчик - выводить в консоль сообщение "Кнопка Отмена нажата" */
+// cancelBtn.onclick = (event) => {
+//     event.preventDefault();
+//     console.log('Simple click handler');
+// };
+
+// cancelBtn.onclick = (event) => {
+//     event.preventDefault();
+//     console.log('Simple click handler 2');
+// };
+
+cancelBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('The Cancel button is pressed');
+});
+
+cancelBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('The Cancel button is pressed 2');
+});
