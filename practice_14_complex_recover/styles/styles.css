@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.productsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.productCard {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px 15px lightblue;
+}
+
+.productTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0096CD;
+  text-align: center;
+}
+
+.productCategory {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.productImg {
+  aspect-ratio: 1 / 1;
+}
+
+.productPrice {
+  font-size: 1.25rem;
+  color: green;
+  text-align: right;
+}
+
+.productDescription {
+  font-size: 0.9rem;
+}
