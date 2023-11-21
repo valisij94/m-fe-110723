@@ -53,27 +53,6 @@ const products = [
     }
 ];
 
-// With filter
-const filtProducts = products.filter( (product) => product.category === 'Other');
-console.log(filtProducts);
-// With reduce
-const onlyOther = products.reduce((acc, val) =>{
-    if (val.category === "Other" ) {
-        acc.push(val)
-    }
-    return acc;
-},[])
-console.log(onlyOther);
-
-// Array methods recover
-const mappedNames = products.map( product => product.name );
-console.log('From map', mappedNames);
-const reducedNames = products.reduce( (acc, val) => {
-    acc.push(val.name);
-    return acc;
-}, []);
-console.log('From reduce', reducedNames);
-
 const productsContainer = document.querySelector('.productsContainer');
 
 function renderProduct(product){
@@ -105,8 +84,6 @@ function renderProduct(product){
   return productCard;
 }
 
-
-
 function renderProductList(products) {
   productsContainer.innerHTML = '';
   products.forEach( product => {
@@ -114,33 +91,3 @@ function renderProductList(products) {
       productsContainer.append(renderedProduct);
   });
 }
-
-
-let myVar = 'Timon';
-
-localStorage.setItem('myVar', myVar);
-// Get from LS
-const fromLS = localStorage.getItem('myVar');
-console.log(fromLS);
-// Remove from LS
-localStorage.removeItem('myVar');
-
-const formObject = {
-    name: 'Vasilij',
-    lastname: 'Ivanov',
-    phone: '12345678'
-}
-
-localStorage.setItem('formData', JSON.stringify(formObject));
-const fromLocalStorage2 = localStorage.getItem('formData');
-const parsedObject = JSON.parse(fromLocalStorage2);
-console.log(parsedObject.lastname);
-
-// короче
-console.log( JSON.parse(localStorage.getItem('formData')).lastname )
-
-/*
- - положить в localStorage обект formObject, используем ключ formData
- - извлечь это из ЛС
- - вывести в консоль значение свойства lastname извлеченных данных
-*/
