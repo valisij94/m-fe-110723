@@ -47,3 +47,11 @@ img {
 .productDescription {
   font-size: 0.9rem;
 }
+
+.themeLight {
+  background-color: lightslategray;
+}
+
+.themeDark {
+  background-color: darkslateblue;
+}
