@@ -1,72 +1,68 @@
-/*
-1. Работаем с отложенным выполнением кода. Нужно вывести в консоль сообщение "Delayed message", через 5 секунд после запуска скрипта.
+/* 1. Вспоминаем промисы. Пишем функцию `promiseFactory`, которая вернет нам промис. Этот промис должен быть зарезолвлен текстом "Success" через 5 секунд.
+*/
+// function promiseFactory(timeout, success) {
+//     console.log('New log')
+//     return new Promise( (resolve) => {
+//         console.log('Something')
+//         setTimeout( () => {
+
+//             resolve('Success');
+//         }, 5 * 1000);
+//     });
+// }
+
+/* 2. Дорабатываем функцию. Нужно, чтобы она принимала в аргументах время задержки `timeout` (в секундах), и флаг `success`. В зависимости от флага, нужно резолвить/отвергать промис через `timeout` секунд.
 */
 
-// setTimeout( () => {
-//     console.log('Delayed message');
-// }, 5000);
-
-/* 2. Делаем блок на странице, который будет запускать отложенное выполнение. Нужно сделать инпут, в который будем вводить задержку в секундах, и кнопку "Запуск". При нажатии на кнопку "Запуск", нужно через N секунд вывести сообщение "Delayed message". N - это кол-во секунд, введенное в инпуте.
-*/
-
-const main = document.querySelector('.mainContainer');
-
-const timeInput = document.createElement('input');
-const btnTimer = document.createElement('button');
-btnTimer.textContent = "Start";
-
-const cancelBtn = document.createElement('button');
-cancelBtn.textContent = 'Cancel';
-main.append(timeInput, btnTimer, cancelBtn);
-
-cancelBtn.disabled = true;
-let timerId;
-
-btnTimer.addEventListener('click', () => {
-    const timerValue = timeInput.value;
-    if (!Number.isNaN(+timerValue)) {
-        cancelBtn.disabled = false;
-        timerId = setTimeout( () => {
-            console.log('Delayed');
-            cancelBtn.disabled = true;
-        }, 1000 * timerValue);
-    }
-    else {
-        console.log('Not a number')
-    }
-});
-
-cancelBtn.addEventListener('click', () => {
-    clearTimeout(timerId);
-    cancelBtn.disabled = true;
-});
+function promiseFactory(timeout, success) {
+    return new Promise( (resolve, reject) => {
+        setTimeout( () => {
+            if (success) {
+                resolve('Success');
+            }
+            else {
+                reject('Error');
+            }
+        }, timeout * 1000);
+    });
+}
 
 /*
-3. Дорабатываем наш блок. Добавляем кнопку "Отмена". Изначально она должна быть скрыта (рекомендуется воспользоваться CSS).
- - когда мы нажимаем на кнопку "Запуск", мы показываем кнопку "Отмена".
- - при нажатии на кнопку "Отмена", нам нужно отменить запланированное в `setTimeout` выполнение.
- - если выполнение все же произошло (т.е. функциональность внутри `setTimeout` выполнилась), то кнопку "Отмена" скрываем.
- */
+4. Обеспечить вывод в консоль текста "Will appear in all cases" после завершения/отвержения промиса (т.е. в любом случае). Тут нам поможет блок `finally`.
+*/
+
+// const newPromise = promiseFactory(2, false);
+// newPromise
+//     .then( res => console.log(res) )
+//     .catch( err => console.log(err) )
+//     .finally( () => {
+//         console.log('Will appear in all cases');
+//     });
+
+/* 5. Создадим с помощью нашей функции 2 промиса. Первый должен быть успешно зарезолвлен через 2 секунды, а второй - через 5 секунд. Нужно запустить их параллельно, и когда выполнятся ОБА промиса - вывести в консоль результаты.
+*/
+
+const pr1 = promiseFactory(2, true);
+const pr2 = promiseFactory(5, true);
+
+// Promise.all( [pr1, pr2] )
+//     .then( res => console.log('All promises', res))
+//     .catch( err => console.log('All promises error', err));
+
+Promise.any( [pr1, pr2] )
+    .then( res => console.log('Result from any', res));
+
+/* 6. Теперь также запускам оба промиса, но нас интересует первый успешно завершенный - то есть, вывести в консоль только результаты того промиса, который будет зарезолвлен первым.
+*/
 
 
- /*
- 8. Работаем с промисами. Задача - написать промис, который через 5 секунд будет успешно завершен текстом "Successfully finished!". Этот текст нужно вывести в консоль.
- */
+/*
+7. Пишем сетевой запрос. Наша задача - обратиться к "бэку" по адресу `https://jsonplaceholder.typicode.com/posts` GET-запросом, и вывести в консоль результат в "удобоваримом" виде (результат нам возвращается в виде JSON). Этот запрос нам вернет массив с товарами.
+*/
 
- const newPromise = new Promise( ( resolve, reject) => {
-    setTimeout( () => {
-        reject('Error')
-        //resolve('Success!')
-    }, 5000);
- });
-
- newPromise.then(
-    (result) => { console.log(result) },
-    (error) => { console.log(error) }
- )
-
-
- newPromise.then(
-    (result) => { console.log(result) }
- )
- .catch( error => { console.log(error) } );
+fetch('https://jsonplaceholder.typicode.com/posts')
+    .then( response => {
+        console.log(response)
+        return response.json()
+    })
+    .then( result => console.log(result));
