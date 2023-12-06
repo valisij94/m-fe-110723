@@ -67,3 +67,65 @@ function getProducts(category) {
             });
         });
 }
+
+/* 1. Пристрелочная. Обратиться к адресу `https://fakestoreapi.com/products/categories`, за категориями товаров. Получив результат, вызвать функцию `renderCategories`, и передать ей результат в аргументе. Использовать синтаксис async/await.
+*/
+
+async function requestCategories() {
+    const response = await fetch(`https://dummyjson.com/products/categories`);
+    const jsonData = await response.json();
+    renderCategories(jsonData);
+}
+
+requestCategories();
+
+/*2. У нас есть функция `getProducts`, она написана с использованием промисов. Переписать ее с использованием синтаксиса async/await.
+*/
+
+async function getProductsAsync(category) {
+    const url = `https://fakestoreapi.com/products${category ? '/category/' + category : ''}`
+    try {
+        const response = await fetch(url);
+        const jsonResult = await response.json();
+        return jsonResult;
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
+// With then
+const products = getProductsAsync('electronics');
+console.log(products)
+products.then( result => console.log('From then', result) );
+
+// With async await
+const wrapper = async () => {
+    const productsResult = await getProductsAsync();
+    console.log('From async await', productsResult)
+}
+
+wrapper();
+
+/*
+4. Пишем универсальную функцию отправки GET-запроса, которая будет возвращать JSON. Назовем ее `jsonRequest`. В аргументах она принимает URL, к которому надо обратиться. Она должна сделать запрос по этому адресу, затем преобразовать результат в JSON, и вернуть "готовый к употреблению" результат. Используем синтаксис async/await.
+*/
+
+async function jsonRequest(url) {
+    //  request URL
+    // parse response as JSON
+    // return parsed result
+    try{
+        const response = await fetch(url);
+        const jsonResult = await response.json();
+        return jsonResult;
+    }
+    catch(error) {
+        console.log('Something went wrong')
+        throw error;
+    }
+}
+
+const res = jsonRequest('https://fakestoreapi.com/products/category/jewelery')
+    .then( resp => console.log(resp))
