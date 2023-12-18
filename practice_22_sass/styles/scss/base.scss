@@ -1,0 +1,56 @@
+$base-font: Helvetica, sans-serif;
+$primary-color: #0096CD;
+
+@mixin flexible {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin grid-mixin($cols: 2) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+}
+
+body {
+  font-family: $base-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color;
+  text-align: center;
+}
+
+ul {
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.intro_block {
+  ul {
+    background-color: lightgreen;
+  }
+  .simple_container_block {
+    background-color: lightseagreen;
+  }
+}
+
+.simple_container_block {
+  background-color: lightsalmon;
+
+  &.attention_block {
+    background-color: red;
+  }
+}
+
+.flex_container {
+  background-color: yellowgreen;
+  border-radius: 10px;
+  @include flexible();
+}
+
+.grid_container {
+  background-color: rebeccapurple;
+  border-radius: 10px;
+  @include grid-mixin(4);
+}
