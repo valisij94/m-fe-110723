@@ -1,7 +1,20 @@
+const dwarwesLocations = [
+  { name: 'Erebor', king: 'Tror'},
+  { name: 'Moria', king: 'Balin'},
+  { name: 'IronHills', king: 'Dain'}
+];
+
+
 const dwarf = {
   name: 'Torin',
   surname: 'Oakshield',
   race: 'Dwarwes'
+};
+
+const torinsArmour = {
+  helmet: 'Steel helmet',
+  armour: 'Orichalk armour',
+  shield: 'Oak shield'
 };
 
 const armedDwarf = {
