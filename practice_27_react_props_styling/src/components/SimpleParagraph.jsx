@@ -1,8 +1,8 @@
 import React from "react";
 
-export function SimpleParagraph() {
+export function SimpleParagraph( {textContent, clickHandler} ) {
 
   return (
-    <p>Hello from Simple Paragraph!</p>
+    <p onClick={clickHandler} >{textContent}</p>
   );
 }

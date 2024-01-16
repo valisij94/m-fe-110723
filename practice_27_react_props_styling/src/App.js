@@ -1,13 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import { SimpleParagraph } from './components/SimpleParagraph';
 import LoginForm from './components/LoginForm';
-import SimpleList from './components/SimpleList';
+import SimpleList from './components/simpleList/SimpleList';
 
 
 function App() {
 
   const currentSeason = 'winter';
+
+  const paragraphClickHandler = () => {
+    console.log('Simple click handler')
+  }
 
   return (
     <>
@@ -21,11 +24,17 @@ function App() {
         <p>Now is: {currentSeason}</p>
       </div>
 
-      <SimpleParagraph />
+      <SimpleParagraph
+        textContent='Hello World!'
+        clickHandler={paragraphClickHandler}
+      />
 
       <LoginForm />
 
-      <SimpleList />
+      <SimpleList
+        listHeaderText='MiddleEarth nations'
+        listSource={['Dwarwes', 'Elves', 'Orcs']}
+      />
     </>
   );
 }
