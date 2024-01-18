@@ -1,6 +1,7 @@
 import React from "react";
+import classes from './SimpleParagraph.module.css';
 
-export function SimpleParagraph( {textContent, clickHandler} ) {
+export function SimpleParagraph( {textContent, clickHandler, currentTheme } ) {
 
   const handleClick = () => {
     if (clickHandler) {
@@ -8,7 +9,15 @@ export function SimpleParagraph( {textContent, clickHandler} ) {
     }
   }
 
+  let theme = '';
+  if (currentTheme) {
+    theme = currentTheme === 'light' ? 'lightTheme' : 'darkTheme';
+  }
+
   return (
-    <p onClick={handleClick} >{textContent}</p>
+    <p
+      onClick={handleClick}
+      className={classes[theme]}
+    >{textContent}</p>
   );
 }

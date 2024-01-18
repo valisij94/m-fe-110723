@@ -2,7 +2,7 @@
 import { SimpleParagraph } from '../simpleParagraph/SimpleParagraph';
 import classes from './SimpleList.module.css';
 
-export default function SimpleList( {listHeaderText, listSource} ) {
+export default function SimpleList( {listHeaderText, listSource, themeValue} ) {
 
     return (
       <>
@@ -11,9 +11,13 @@ export default function SimpleList( {listHeaderText, listSource} ) {
         }
         {
           (listSource && listSource.length > 0) ? (
-            <ul class={classes.list}>
+            <ul className={classes.list}>
               {
-                listSource.map( elem => <li className={classes.listItem} key={elem}><SimpleParagraph textContent={elem}/></li>)
+                listSource.map( elem => <li className={classes.listItem} key={elem}>
+                  <SimpleParagraph
+                    textContent={elem}
+                    currentTheme={themeValue}
+                  /></li>)
               }
             </ul>
           ) :

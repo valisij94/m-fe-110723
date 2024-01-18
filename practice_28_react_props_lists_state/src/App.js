@@ -2,10 +2,15 @@ import './App.css';
 import { SimpleParagraph } from './components/simpleParagraph/SimpleParagraph';
 import LoginForm from './components/LoginForm';
 import SimpleList from './components/simpleList/SimpleList';
+import DwarwesLocationList from './components/dwarwesLocations/DwarwesLocationList';
+import { useState } from 'react';
 
 
 function App() {
 
+  const appTheme = 'dark';
+
+  const [state, setState] = useState('Hello from simple state!');
 
   const dwarwesLocations = [
     {
@@ -32,7 +37,8 @@ function App() {
         <h2>Welcome, Guest!</h2>
 
         <SimpleParagraph
-          textContent='Hello World!'
+          textContent={state}
+          currentTheme={appTheme}
         />
 
         <LoginForm />
@@ -40,7 +46,11 @@ function App() {
         <SimpleList
           listHeaderText='MiddleEarth nations'
           listSource={['Dwarwes', 'Elves', 'Orcs']}
+          themeValue={appTheme}
         />
+
+        <DwarwesLocationList locations={dwarwesLocations} />
+
       </div>
     </>
   );
