@@ -1,0 +1,9 @@
+.lightTheme {
+  background-color: aliceblue;
+  color: mediumblue;
+}
+
+.darkTheme {
+  background-color: darkblue;
+  color: aliceblue;
+}
