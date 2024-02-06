@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import classes from './DwarfForm.module.css';
 
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export default function DwarfForm() {
 
@@ -12,6 +13,8 @@ export default function DwarfForm() {
     formState: { errors },
     getValues
   } = useForm();
+
+  const navigate = useNavigate();
 
   const [formError, setFormError] = useState('');
 
@@ -44,6 +47,7 @@ export default function DwarfForm() {
         }
         const result = await response.json();
         console.log(result);
+        navigate('/');
       }
       catch (error) {
         setFormError(error.message);
