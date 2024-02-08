@@ -12,13 +12,16 @@
 
 .dwarfFormInput {
   padding: 8px;
-  border: 1px solid darkgreen;
   border-radius: 10px;
   color: white;
+}
+
+.dark_formInput {
+  border: 1px solid darkgreen;
   background-color: darkslategray;
 }
 
-.dwarfFormInput.light {
+.light_formInput {
   background-color: rgb(56, 194, 130);
   color: darkblue;
 }

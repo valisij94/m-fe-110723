@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import classes from './DwarfForm.module.css';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from "../../context/themeContext";
+import { DwarfContext } from "../../context/dwarfContext";
 
 export default function DwarfForm() {
+
+  const themeContext = useContext(ThemeContext);
+
+  const {addParticipant} = useContext(DwarfContext);
 
   const {
     register,
@@ -46,7 +52,9 @@ export default function DwarfForm() {
           throw new Error('Failed to submit!');
         }
         const result = await response.json();
-        console.log(result);
+
+        addParticipant(formData);
+
         navigate('/');
       }
       catch (error) {
@@ -67,7 +75,10 @@ export default function DwarfForm() {
     >
       <label htmlFor="dwarfName">Enter your name, brave dwarf!</label>
       <input
-        className={classes.dwarfFormInput}
+        className={
+          `${classes.dwarfFormInput}
+          ${classes[`${themeContext.theme}_formInput`]}
+        `}
         type="text"
         {...register('dwarfName', {
           required: 'Please, enter your name!',
@@ -86,7 +97,10 @@ export default function DwarfForm() {
       }
       <label htmlFor="weapon">What weapon do you prefer?</label>
       <input
-        className={classes.dwarfFormInput}
+        className={
+          `${classes.dwarfFormInput}
+          ${classes[`${themeContext.theme}_formInput`]}
+        `}
         type="text"
         {...register('dwarfWeapon', {
           required: 'Choose your weapon!',
@@ -99,7 +113,10 @@ export default function DwarfForm() {
 
       <label htmlFor="email">Please enter email</label>
       <input
-        className={classes.dwarfFormInput}
+        className={
+          `${classes.dwarfFormInput}
+          ${classes[`${themeContext.theme}_formInput`]}
+        `}
         type="email"
         {...register('dwarfEmail', {
           required: 'Please enter your email!',
@@ -123,6 +140,8 @@ export default function DwarfForm() {
         type="submit"
         className={classes.dwarfFormButton}
       >Join Torin's troop!</button>
+
+      <button type="button" onClick={themeContext.toggleTheme}>Toggle Theme</button>
     </form>
 
   );
