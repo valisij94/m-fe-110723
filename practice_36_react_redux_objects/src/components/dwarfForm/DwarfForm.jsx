@@ -1,19 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import classes from './DwarfForm.module.css';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ThemeContext } from "../../context/themeContext";
-import { DwarfContext } from "../../context/dwarfContext";
 import { useDispatch } from "react-redux";
 import { incrementParticipants } from "../../store/actions/participantsActions";
 
 export default function DwarfForm() {
-
-  const themeContext = useContext(ThemeContext);
-
-  const {addParticipant} = useContext(DwarfContext);
 
   const dispatch = useDispatch();
 
@@ -57,8 +51,6 @@ export default function DwarfForm() {
         }
         const result = await response.json();
 
-        addParticipant(formData);
-
         dispatch(incrementParticipants());
         navigate('/');
       }
@@ -82,7 +74,6 @@ export default function DwarfForm() {
       <input
         className={
           `${classes.dwarfFormInput}
-          ${classes[`${themeContext.theme}_formInput`]}
         `}
         type="text"
         {...register('dwarfName', {
@@ -104,7 +95,6 @@ export default function DwarfForm() {
       <input
         className={
           `${classes.dwarfFormInput}
-          ${classes[`${themeContext.theme}_formInput`]}
         `}
         type="text"
         {...register('dwarfWeapon', {
@@ -120,7 +110,6 @@ export default function DwarfForm() {
       <input
         className={
           `${classes.dwarfFormInput}
-          ${classes[`${themeContext.theme}_formInput`]}
         `}
         type="email"
         {...register('dwarfEmail', {
@@ -146,7 +135,6 @@ export default function DwarfForm() {
         className={classes.dwarfFormButton}
       >Join Torin's troop!</button>
 
-      <button type="button" onClick={themeContext.toggleTheme}>Toggle Theme</button>
     </form>
 
   );

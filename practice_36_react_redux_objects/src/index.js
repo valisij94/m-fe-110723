@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import PostsPage from './pages/PostsPage';
 import { store } from './store/store';
+import AmmunitionPage from './pages/AmmunitionPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/feed',
         element: <PostsPage />
+      },
+      {
+        path: '/weapons',
+        element: <AmmunitionPage />
       }
     ]
   }
