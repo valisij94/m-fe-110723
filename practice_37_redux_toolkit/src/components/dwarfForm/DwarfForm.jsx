@@ -4,12 +4,9 @@ import classes from './DwarfForm.module.css';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
 import { addParticipant } from "../../store/actions/participantsActions";
 
 export default function DwarfForm() {
-
-  const dispatch = useDispatch();
 
   const {
     register,
@@ -51,7 +48,6 @@ export default function DwarfForm() {
         }
         const result = await response.json();
 
-        dispatch(addParticipant(formData));
         navigate('/');
       }
       catch (error) {
