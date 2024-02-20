@@ -4,7 +4,9 @@ import classes from './DwarfForm.module.css';
 
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { addParticipant } from "../../store/actions/participantsActions";
+import { useDispatch } from "react-redux";
+import { incrementParticipants } from "../../store/slices/counterSlice";
+import { addParticipant } from "../../store/slices/participantsSlice";
 
 export default function DwarfForm() {
 
@@ -14,6 +16,8 @@ export default function DwarfForm() {
     formState: { errors },
     getValues
   } = useForm();
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -47,6 +51,9 @@ export default function DwarfForm() {
           throw new Error('Failed to submit!');
         }
         const result = await response.json();
+
+        dispatch(incrementParticipants());
+        dispatch( addParticipant(formData) );
 
         navigate('/');
       }

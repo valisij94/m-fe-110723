@@ -1,9 +1,10 @@
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './slices/counterSlice';
+import participantsReducer from './slices/participantsSlice';
 
-import { createStore, combineReducers } from 'redux';
-import { participantsReducer } from './reducers/participantsReducer';
-
-export const store = createStore(
-  combineReducers({
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
     participants: participantsReducer
-  })
-);
+  }
+});
