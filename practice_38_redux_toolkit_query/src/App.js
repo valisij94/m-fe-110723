@@ -12,6 +12,7 @@ function App() {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/register'>Register</Link></li>
           <li><Link to='/feed'>Feed</Link></li>
+          <li><Link to='/newPost'>New Post</Link></li>
         </ul>
       </nav>
       <Outlet />

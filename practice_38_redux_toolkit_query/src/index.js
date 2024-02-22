@@ -9,6 +9,8 @@ import RegisterPage from './pages/RegisterPage';
 import PostsPage from './pages/PostsPage';
 import { store } from './store/store';
 import AmmunitionPage from './pages/AmmunitionPage';
+import PostDetailPage from './pages/PostDetailPage';
+import PostFormPage from './pages/PostFormPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: '/feed',
         element: <PostsPage />
+      },
+      {
+        path: '/feed/:id',
+        element: <PostDetailPage />
+      },
+      {
+        path: '/newPost',
+        element: <PostFormPage />
       },
       {
         path: '/weapons/:dwarfName',
