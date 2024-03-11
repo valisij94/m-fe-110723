@@ -30,19 +30,23 @@ console.log(obj);
 ```
 6. Что будет выведено в консоли?
 ```
-console.log( 5 + 5 );
-console.log( 5 + '5' );
-console.log( 5 - 5 );
-console.log( 5 - '5' );
-console.log( 5 - 'five' );
-console.log( 5 && 5 );
-console.log( 0 && 5 );
-console.log( true && false );
-console.log( true && 'false' );
-console.log( true && 'false' && 0 );
-console.log( true && 'false' && '0' );
-console.log( true || false );
-console.log( false || 0 || '' || 'simba' );
+console.log( 5 + 5 );   // 55 10
+console.log( 5 + '5' ); // '55' '55'
+console.log( 5 - 5 ); // 0
+console.log( 5 - '5' ); // NaN 0
+
+
+console.log( 5 - 'five' ); // NaN
+console.log( 5 && 5); // 5
+console.log( 0 && 5 ); // 5 0
+console.log( true && false ); // true false
+
+
+console.log( true && 'false' ); // 'false'
+console.log( true && 'false' && 0 ); // 0
+console.log( true && 'false' && '0' ); // '0'
+console.log( true || false ); // true
+console.log( false || 0 || '' || 'simba' ); // 0 'simba'
 ```
 
 #### JS Arrays, Strings
@@ -58,6 +62,12 @@ console.log( false || 0 || '' || 'simba' );
 ```
 camelCase('timon and pumba'); // timonAndPumba
 camelCase('simba'); // simba
+
+const camelCase = (str) => {
+  return str.split(' ')
+            .map( (s, idx) => idx === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1))
+            .join('');
+}
 ```
 
 #### Разное
@@ -74,13 +84,13 @@ camelCase('simba'); // simba
 5. Как обрабатывать нештатные ситуации в промисах?
 6. В какой последовательности будут сообщения в консоли?
 ```
-console.log('Start');
+console.log('Start'); // 1 1
 const promise = new Promise( (resolve, reject) => {
-  console.log('Hello from promise!');
-  resolve('Akuna Matata!');
+  console.log('Hello from promise!'); // 3 2
+  resolve('Akuna Matata!'); // 4 4
 });
 promise.then( res => console.log(res) );
-console.log('Finish');
+console.log('Finish'); // 2 3
 ```
 7. Есть 2 промиса, нам нужно дождаться выполнения обоих, и только тогда обработать их результаты. Как нам это сделать?
 8. Как нам обрабатывать нештатные ситуации при использовании синтаксиса `async/await`?
