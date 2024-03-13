@@ -1,0 +1,11 @@
+.ammoFilterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.applyFiltersBtn {
+  padding: 10px;
+  align-self: center;
+}

@@ -1,0 +1,44 @@
+.dwarfForm {
+  margin: 15px auto;
+  max-width: 400px;
+  border: 2px solid darkolivegreen;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  padding: 10px;
+}
+
+.dwarfFormInput {
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.dark_formInput {
+  border: 1px solid darkgreen;
+  background-color: darkslategray;
+}
+
+.light_formInput {
+  background-color: rgb(56, 194, 130);
+  color: darkblue;
+}
+
+.dwarfFormButton {
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: darkgreen;
+  border-radius: 10px;
+  transition: background-color .5s;
+}
+
+.dwarfFormButton.light {
+  background-color: lightseagreen;
+}
+
+.dwarfFormButton:hover {
+  background-color: darkred
+}
