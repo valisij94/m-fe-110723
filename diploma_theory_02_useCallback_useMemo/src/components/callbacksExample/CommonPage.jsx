@@ -38,7 +38,7 @@ export default function AttemptsPage() {
       <input type="text" placeholder="Attempt Data" value={inputValue} onChange={handleInputChange}></input>
       <button onClick={handleAddClick}>Add</button>
       <h3>This is a result of heavyCalculation</h3>
-      <p>{`Result is ${heavyCalculation()}`}</p>
+      <p>{`The 2nd Fibonacci number: ${heavyCalculation()}`}</p>
       <AttemptsList attempts={attempts}/>
     </div>
   )
