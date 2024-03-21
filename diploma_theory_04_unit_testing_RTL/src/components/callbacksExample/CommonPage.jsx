@@ -25,12 +25,9 @@ export default function AttemptsPage() {
   }
 
   const memoizedFiboNumber = useMemo(function heavyCalculation() {
-    console.log('call heavy function');
-    // Something heavy
     return 1;
   }, []);
 
-  console.log('Render CommonPage');
   return (
 
     <div>
