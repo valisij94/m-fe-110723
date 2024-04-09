@@ -1,6 +1,6 @@
 /*Создаем в папке components папку mui-components, а в ней - компонент SimpleComponent. Этот компонент должен содержать поле ввода (инпут), кнопку, и текст (typography variant="body1").
 */
-import { Button, Typography, TextField, IconButton, Grid } from '@mui/material'
+import { Typography, TextField, Grid, Button } from '@mui/material'
 import { useState } from 'react';
 
 import SaveIcon from '@mui/icons-material/Save';
@@ -11,16 +11,27 @@ export default function SimpleComponent() {
   const [displayedValue, setDisplayedValue] = useState('Default text');
 
   return (
-    <Grid container>
-      <Grid item xs={6}>
-        <Typography variant='body1'>This text takes 1/2 of available width</Typography>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={6} lg={4}>
+        <TextField variant='outlined' fullWidth label='Name' />
       </Grid>
-      <Grid item xs={6}>
-        <Typography variant='body1'>This text also takes 1/2 of available width</Typography>
+      <Grid item xs={12} md={6} lg={4}>
+        <TextField variant='outlined' fullWidth label='LastName' />
       </Grid>
-      <Grid item xs={12}>
-        <Typography variant='body1'>This text takes all available width</Typography>
+      <Grid item xs={12} lg={4}>
+        <TextField variant='outlined' fullWidth label='Email' />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <TextField variant='outlined' fullWidth label='LastName' />
+      </Grid>
+      <Grid item xs={12} sm={6} md={8} lg={4}>
+        <TextField variant='outlined' fullWidth label='Email' />
+      </Grid>
+      <Grid item xs={12} lg={4}>
+        <Button variant='outlined' fullWidth>Register</Button>
       </Grid>
     </Grid>
+
   );
 }

@@ -1,3 +1,4 @@
 .vscode
 /*/dummy
 package-lock.json
+node_modules
